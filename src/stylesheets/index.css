@@ -1,1 +1,20 @@
 @import '~antd/dist/antd.css';
+
+.breed-filter {
+  display: flex;
+  padding: 20px;
+}
+
+.breed-filter__select {
+  flex-grow: 1;
+  margin-right: 20px;
+}
+
+.dogs-list {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.dogs-list__item {
+  padding: 10px;
+}
