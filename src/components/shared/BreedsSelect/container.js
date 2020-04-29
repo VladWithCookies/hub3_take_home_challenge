@@ -1,11 +1,17 @@
 import React from 'react';
 import { keys } from 'lodash';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { getBreeds } from '../../../concepts/breeds/actions';
 import BreedsSelectComponent from './component';
 
 class BreedsSelect extends React.Component {
+  static propTypes = {
+    breeds: PropTypes.shape().isRequired,
+    getBreeds: PropTypes.func.isRequired,
+  }
+
   get options() {
     const { breeds } = this.props;
 

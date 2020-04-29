@@ -1,12 +1,12 @@
 import { createLogic } from 'redux-logic';
 
 import { MAX_SEARCH_RESULT_LENGTH } from '../../../constants';
-import parseResponseData from '../../../utils/parseResponseData';
-import { GET_DOGS } from '../types';
+import parseResponseData from '../../../utils/dogs/parseResponseData';
+import { GET_DOGS, RESET_FILTER } from '../types';
 import { setDogs } from '../actions';
 
 const getDogsOperation = createLogic({
-  type: GET_DOGS,
+  type: [GET_DOGS, RESET_FILTER],
   latest: true,
 
   async process({ httpClient }, dispatch, done) {

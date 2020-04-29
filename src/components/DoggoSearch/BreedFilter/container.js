@@ -1,23 +1,33 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import {
   getDogs,
-  getDogsByBreeds,
-  setSearchedBreeds,
+  setFilter,
+  filterDogs,
 } from '../../../concepts/dogs/actions';
 import BreedFilterComponent from './component';
 
 class BreedFilter extends React.Component {
+  static propTypes = {
+    getDogs: PropTypes.func.isRequired,
+    setFilter: PropTypes.func.isRequired,
+    filterDogs: PropTypes.func.isRequired,
+    searchedBreeds: PropTypes.arrayOf(PropTypes.string).isRequired
+  }
+
   handleChange = (value) => {
-    this.props.setSearchedBreeds(value);
+    const breeds = value.slice(0, 5);
+
+    this.props.setFilter(breeds);
   }
 
   handleSubmit = () => {
     const { searchedBreeds } = this.props;
 
     if (searchedBreeds.length) {
-      this.props.getDogsByBreeds();
+      this.props.filterDogs({ breeds: searchedBreeds });
     } else {
       this.props.getDogs();
     }
@@ -40,8 +50,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   getDogs,
-  getDogsByBreeds,
-  setSearchedBreeds,
+  setFilter,
+  filterDogs,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BreedFilter);

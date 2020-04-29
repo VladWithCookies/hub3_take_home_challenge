@@ -9,11 +9,17 @@ export const setDogs = dogs => ({
   dogs,
 });
 
-export const getDogsByBreeds = () => ({
-  type: types.GET_DOGS_BY_BREEDS,
+export const filterDogs = ({ breeds, subBreed }) => ({
+  type: types.FILTER_DOGS,
+  breeds,
+  subBreed,
 });
 
-export const setSearchedBreeds = breeds => ({
-  type: types.SET_SEARCHED_BREEDS,
+export const setFilter = breeds => ({
+  type: types.SET_FILTER,
   breeds,
 });
+
+export const resetFilter = () => ({
+  type: types.RESET_FILTER,
+})

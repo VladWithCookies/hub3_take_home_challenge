@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Select } from 'antd';
+import PropTypes from 'prop-types';
 
 const BreedsSelect = ({ onChange, value, options }) => (
   <Select

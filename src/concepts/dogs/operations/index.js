@@ -1,7 +1,7 @@
 import getDogs from './getDogs';
-import getDogsByBreeds from './getDogsByBreeds';
+import filterDogs from './filterDogs';
 
 export default [
   getDogs,
-  getDogsByBreeds,
+  filterDogs,
 ];

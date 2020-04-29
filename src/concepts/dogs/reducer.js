@@ -13,8 +13,12 @@ const all = (state = [], action) => {
 
 const searchedBreeds = (state = [], action) => {
   switch (action.type) {
-    case types.SET_SEARCHED_BREEDS:
+    case types.FILTER_DOGS:
       return action.breeds;
+    case types.SET_FILTER:
+      return action.breeds;
+    case types.RESET_FILTER:
+      return [];
     default:
       return state;
   }
