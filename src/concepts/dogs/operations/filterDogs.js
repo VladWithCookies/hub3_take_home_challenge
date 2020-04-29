@@ -1,5 +1,5 @@
 import { createLogic } from 'redux-logic';
-import { compact, join } from 'lodash';
+import { compact, join, ceil } from 'lodash';
 
 import { MAX_SEARCH_RESULT_LENGTH } from '../../../constants';
 import parseResponseData from '../../../utils/dogs/parseResponseData';
@@ -12,11 +12,14 @@ const filterDogsOperation = createLogic({
 
   async process({ httpClient, action }, dispatch, done) {
     const { breeds, subBreed } = action;
-    const dogsPerBreed = Math.ceil(MAX_SEARCH_RESULT_LENGTH / breeds.length);
+    const dogsPerBreed = ceil(MAX_SEARCH_RESULT_LENGTH / breeds.length);
     const buildUrl = breed => join(compact(['breed', breed, subBreed, 'images', 'random', dogsPerBreed]), '/')
     const promises = breeds.map(breed => httpClient.get(buildUrl(breed)));
     const responses = await Promise.all(promises);
-    const dogs = responses.reduce((accumulator, response) => accumulator.concat(parseResponseData(response)), []);
+
+    const dogs = responses
+      .reduce((accumulator, response) => accumulator.concat(parseResponseData(response)), [])
+      .slice(0, MAX_SEARCH_RESULT_LENGTH);
 
     dispatch(setDogs(dogs));
     done();
