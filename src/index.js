@@ -7,10 +7,8 @@ import DoggoSearch from './components/DoggoSearch';
 import './stylesheets/index.css';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <DoggoSearch />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <DoggoSearch />
+  </Provider>,
   document.getElementById('root')
 );

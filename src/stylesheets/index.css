@@ -1,5 +1,9 @@
 @import '~antd/dist/antd.css';
 
+.header {
+  border-bottom: 1px solid #f0f0f0
+}
+
 .breed-filter {
   display: flex;
   padding: 20px;
@@ -17,4 +21,13 @@
 
 .dogs-list__item {
   padding: 10px;
+}
+
+.dogs-list__item-image {
+  height: 500px;
+  object-fit: cover;
+}
+
+.sub-breed-filter {
+  height: 100%;
 }

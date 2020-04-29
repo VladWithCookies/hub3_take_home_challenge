@@ -3,6 +3,7 @@ import { PageHeader } from 'antd';
 
 const Header = () => (
   <PageHeader
+    className="header"
     title="Doggo Search"
     extra={[
       <a key="1" href="/">Search</a>,
